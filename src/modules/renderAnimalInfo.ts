@@ -23,7 +23,7 @@
   //Bonus om du skriver ut rubriken "Skills" med CSS.
   //=====================================================//
 
-import { IAnimal } from "./IAnimal";
+import { IAnimal } from "./IAnimal.js";
 
 export default function renderAnimalInfo(animal: IAnimal): void {
   const animalInfoContainer = document.querySelector(".animal-info");
