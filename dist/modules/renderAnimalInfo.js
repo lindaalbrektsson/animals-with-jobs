@@ -30,32 +30,53 @@ export default function renderAnimalInfo(animal) {
     const image = document.createElement("img");
     image.src = `./images/${animal.imageUrl}`;
     image.alt = animal.name;
+    image.classList.add("animal-image");
     const nameAndType = document.createElement("h2");
     nameAndType.textContent = `${animal.name} the ${animal.kindOfAnimal}`;
+    nameAndType.classList.add("animal-name");
     const employmentInfo = document.createElement("p");
     employmentInfo.textContent = `${animal.job} - Currently ${animal.employmentEndDate ? "not employed" : "employed"}`;
+    employmentInfo.classList.add("animal-job");
     const age = new Date().getFullYear() - Number(animal.birthYear);
-    const ageInfo = document.createElement("p");
-    ageInfo.textContent = `Age: ${age} years old.`;
+    const ageWrapper = document.createElement("p");
+    ageWrapper.classList.add("animal-age");
+    const ageLabel = document.createElement("span");
+    ageLabel.textContent = "Age: ";
+    ageLabel.classList.add("age-label");
+    const ageValue = document.createElement("strong");
+    ageValue.textContent = `${age} years old.`;
+    ageValue.classList.add("age-value");
+    ageWrapper.appendChild(ageLabel);
+    ageWrapper.appendChild(ageValue);
     const skillsHeading = document.createElement("h3");
     skillsHeading.textContent = "Skills:";
+    skillsHeading.classList.add("skills-heading");
     const skillsList = document.createElement("ul");
+    skillsList.classList.add("skills-list");
     if (Array.isArray(animal.skills)) {
         for (const skill of animal.skills) {
             const li = document.createElement("li");
             li.textContent = skill;
+            li.classList.add("skill-item");
             skillsList.appendChild(li);
         }
     }
     else if (typeof animal.skills === "string") {
         const li = document.createElement("li");
         li.textContent = animal.skills;
+        li.classList.add("skill-item");
+        skillsList.appendChild(li);
+    }
+    else {
+        const li = document.createElement("li");
+        li.textContent = "No skills listed";
+        li.classList.add("skill-item");
         skillsList.appendChild(li);
     }
     animalInfoContainer.appendChild(image);
     animalInfoContainer.appendChild(nameAndType);
     animalInfoContainer.appendChild(employmentInfo);
-    animalInfoContainer.appendChild(ageInfo);
+    animalInfoContainer.appendChild(ageWrapper);
     animalInfoContainer.appendChild(skillsHeading);
     animalInfoContainer.appendChild(skillsList);
 }
