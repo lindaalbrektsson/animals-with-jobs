@@ -10,7 +10,14 @@ export default function renderListOfAnimals(animals) {
     for (const animal of animals) {
         const li = document.createElement("li");
         li.textContent = animal.name;
+        if (animals[0] === animal) {
+            li.classList.add("active");
+        }
         li.addEventListener("click", () => {
+            document.querySelectorAll(".list-of-animals li").forEach((listItem) => {
+                listItem.classList.remove("active");
+            });
+            li.classList.add("active");
             renderAnimalInfo(animal);
         });
         animalListContainer.appendChild(li);
