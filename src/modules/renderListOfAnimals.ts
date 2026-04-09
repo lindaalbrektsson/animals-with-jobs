@@ -11,23 +11,24 @@ export default function renderListOfAnimals(animals: IAnimal[]): void {
 
   if (!animalListContainer) return;
 
-  for (const animal of animals) {
-    const li = document.createElement("li");
-    li.textContent = animal.name;
+  animals.forEach((animal, index) => {
+  const li = document.createElement("li");
+  li.textContent = animal.name;
 
-    if (animals[0] === animal) {
-      li.classList.add("active");
-    }
+  if (index === 0) {
+    li.classList.add("active");
+  }
 
-    li.addEventListener("click", () => {
-      document.querySelectorAll(".list-of-animals li").forEach((listItem) => {
-        listItem.classList.remove("active");
-      });
-
-      li.classList.add("active");
-      renderAnimalInfo(animal);
+  li.addEventListener("click", () => {
+    document.querySelectorAll(".list-of-animals li").forEach((listItem) => {
+      listItem.classList.remove("active");
     });
 
-    animalListContainer.appendChild(li);
-  }
+    li.classList.add("active");
+    renderAnimalInfo(animal);
+  });
+
+  animalListContainer.appendChild(li);
+});
+
 }

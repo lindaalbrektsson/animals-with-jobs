@@ -7,10 +7,10 @@ export default function renderListOfAnimals(animals) {
     const animalListContainer = document.querySelector(".list-of-animals ul");
     if (!animalListContainer)
         return;
-    for (const animal of animals) {
+    animals.forEach((animal, index) => {
         const li = document.createElement("li");
         li.textContent = animal.name;
-        if (animals[0] === animal) {
+        if (index === 0) {
             li.classList.add("active");
         }
         li.addEventListener("click", () => {
@@ -21,5 +21,5 @@ export default function renderListOfAnimals(animals) {
             renderAnimalInfo(animal);
         });
         animalListContainer.appendChild(li);
-    }
+    });
 }

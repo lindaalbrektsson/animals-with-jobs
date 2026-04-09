@@ -34,7 +34,6 @@ export default function renderAnimalInfo(animal: IAnimal): void {
 
   const image = document.createElement("img");
   image.src = `./images/${animal.imageUrl}`;
-  image.alt = animal.name;
   image.classList.add("animal-image");
 
   const nameAndType = document.createElement("h2");

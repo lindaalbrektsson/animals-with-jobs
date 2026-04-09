@@ -29,7 +29,6 @@ export default function renderAnimalInfo(animal) {
     animalInfoContainer.innerHTML = "";
     const image = document.createElement("img");
     image.src = `./images/${animal.imageUrl}`;
-    image.alt = animal.name;
     image.classList.add("animal-image");
     const nameAndType = document.createElement("h2");
     nameAndType.textContent = `${animal.name} the ${animal.kindOfAnimal}`;
