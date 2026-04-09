@@ -43,7 +43,7 @@ body {
     height: min(380px, 80vw);
     object-fit: cover;
     border-radius: 50%;
-    border: 10px solid #eeeeee;
+    border: 6px solid #ffffff;
     margin-bottom: 30px;
 }
 
